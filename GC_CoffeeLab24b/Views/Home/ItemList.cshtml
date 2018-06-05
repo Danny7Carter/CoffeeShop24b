@@ -12,18 +12,18 @@
     <input type="submit" value="Search by Item Name" class="btn btn-primary" />
 </form>
 <br />
-@*<form action="~/Home/ItemListByItemID" method="get">
+<form action="~/Home/ItemListByItemID" method="get">
     <label>
         Search by item id:
         <select name="itemid">
             @foreach (Item i in ViewBag.Items)
             {
-                <option value="@i.ItemID">@i.Item1</option>
+                <option value="@i.ItemName">@i.ItemName</option>
             }
         </select>
     </label>
     <input type="submit" value="Search by Item" class="btn btn-primary" />
-</form>*@
+</form>
 <table class="table table-bordered">
     <tr>
         <th><a href="~/Home/ItemListSorted?column=Title">ItemID</a></th>

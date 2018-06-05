@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<form action="/Items/Index/" name="form" method="get" onsubmit="return checkAll()">
+    <input id="value1" type="text" name="username" placeholder="Username" /> <br />
+    <input id="value2" type="text" name="password" placeholder="Password" /> <br />
+
+    <input type="submit" value="Submit" class="btn btn-primary" />
+
+
+
+
+</form>
+
+<script>
+
+    function checkAll()
+    {
+        var value1 = document.forms["form"]["username"].value;
+        console.log(value1);
+        if (value1.length < 7)
+        {
+            alert("Please enter a valid username");
+            return false;
+        }
+    }
+
+</script>
+

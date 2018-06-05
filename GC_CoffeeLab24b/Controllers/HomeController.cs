@@ -70,27 +70,27 @@ namespace GC_CoffeeLab24b.Controllers
             }
             else if (column == "ItemName")
             {
-                ViewBag.Books = (from b in db.Items
-                                 orderby b.ItemName
-                                 select b).ToList();
+                ViewBag.Books = (from i in db.Items
+                                 orderby i.ItemName
+                                 select i).ToList();
             }
             else if (column == "Description")
             {
-                ViewBag.Books = (from b in db.Items
-                                 orderby b.Description
-                                 select b).ToList();
+                ViewBag.Books = (from i in db.Items
+                                 orderby i.Description
+                                 select i).ToList();
             }
             else if (column == "Quantity")
             {
-                ViewBag.Books = (from b in db.Items
-                                 orderby b.Quantity
-                                 select b).ToList();
+                ViewBag.Books = (from i in db.Items
+                                 orderby i.Quantity
+                                 select i).ToList();
             }
             else if (column == "Price")
             {
-                ViewBag.Books = (from b in db.Items
-                                 orderby b.Price
-                                 select b).ToList();
+                ViewBag.Books = (from i in db.Items
+                                 orderby i.Price
+                                 select i).ToList();
             }
 
             ViewBag.ItemID = db.Items.ToList();
@@ -107,9 +107,9 @@ namespace GC_CoffeeLab24b.Controllers
                 //if it doesn't, make a new list of books
                 List<Item> cart = new List<Item>();
                 //add this book to it
-                cart.Add((from b in db.Items
-                          where b.ItemName == ItemName
-                          select b).Single());
+                cart.Add((from i in db.Items
+                          where i.ItemName == ItemName
+                          select i).Single());
                 //add the list to the session
                 Session.Add("Cart", cart);
             }
@@ -118,10 +118,19 @@ namespace GC_CoffeeLab24b.Controllers
                 //if it does exist, get the list
                 List<Item> cart = (List<Item>)(Session["Cart"]);
                 //add this book to it
-                cart.Add((from b in db.Items
-                          where b.ItemName == ItemName
-                          select b).Single());
+                cart.Add((from i in db.Items
+                          where i.ItemName == ItemName
+                          select i).Single());
             }
+            return View();
+
+
+        }
+        //this will go to the login page
+        //1.Access modifier/2.Action/3.View
+        public ActionResult Login()
+        {
+
             return View();
         }
     }
