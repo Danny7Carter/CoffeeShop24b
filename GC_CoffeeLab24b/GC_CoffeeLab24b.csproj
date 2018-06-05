@@ -209,6 +209,7 @@
     <Content Include="Models\CoffeeUserItems.edmx.diagram">
       <DependentUpon>CoffeeUserItems.edmx</DependentUpon>
     </Content>
+    <Content Include="App_Start\.gitignore" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
