@@ -15,6 +15,8 @@ namespace GC_CoffeeLab24b.Models
     
     public partial class CoffeeShopEntities : DbContext
     {
+        internal object Quantity;
+
         public CoffeeShopEntities()
             : base("name=CoffeeShopEntities")
         {
@@ -27,6 +29,5 @@ namespace GC_CoffeeLab24b.Models
     
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public object Quantity { get; internal set; }
     }
 }

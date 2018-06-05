@@ -47,13 +47,8 @@ namespace GC_CoffeeLab24b.Controllers
         {
             CoffeeShopEntities db = new CoffeeShopEntities();
             //LINQ Query
-            List<Item> books = (from b in db.Items
-                                where b.ItemName.Contains(ItemName)
-                                select b).ToList();
-            dynamic Items = null;
-            ViewBag.Items = Items;
+            ViewBag.Items = db.Items.Where(i => i.ItemName == ItemName).ToList();
 
-            ViewBag.ItemName = db.Items.ToList();
 
             return View("ItemList");
         }
