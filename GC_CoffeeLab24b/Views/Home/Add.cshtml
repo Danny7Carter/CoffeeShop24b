@@ -13,3 +13,96 @@ Cart:
     }
 </ul>
 
+<script>
+
+      // Items names stored in the array
+      var names = [];
+
+      // Item Prices stored in the array.
+      var prices = [];
+
+      // Quantities of the items ordered. Will be updated
+      // with each click of Add to Cart button for any
+      // item.
+      var qty = [];
+
+      /**
+       * Function to add an item to the Shopping Cart.
+       * function takes in the index of the item and increases
+       * the quantity ordered for that particular item being
+       * clicked to add to the cart.
+       */
+      function add(index)
+      {
+          // Quantity Ordered incremented
+          qty[index] += 1;
+
+          // display Total cost in the View Shopping Cart Link.
+          var elem = document.getElementById("cart");
+          elem.innerHTML = "View Shopping Cost: $" +
+              parseFloat(Math.round(calculate() * 100) / 100).toFixed(2);
+      }
+
+      /**
+       * Function to calculate Cost. The Cost is computed for all
+       * the items ordered multipled by the cost/price of that item.
+       * Total cost is the sum of all items ordered.
+       */
+      function calculate()
+      {
+          var cost = 0;
+
+          for(var i=0; i<12; i++)
+          {
+            if(qty[i] > 0)
+            {
+              cost += qty[i] * prices[i];
+            }
+          }
+
+          return cost;
+      }
+
+      /**
+       * Function to display itemized shopping cart in a table.
+       * Iterate over all the quantities ordered, If > 1
+       * add it to output row. Display its name, quantity ordered
+       * unit price and subtotal for that item being ordered.
+       *
+       * At the end display cost of all the shopping items.
+       */
+      function display()
+      {
+
+        // output string
+        var output = "";
+
+        // DOM element to display the shopping cart
+        var elem = document.getElementById("output");
+
+        // Build table and header row for item name, unit price,
+        // quantity ordered, sub total for that item.
+        output = "<table border='1' style='width: 100%'>";
+        output += "<tr><th>Item Name</th><th>Quantity</th><th>Unit Price</th><th>Total</th></tr>";
+
+        // iterate all quantities > 1 and add the details to output
+        for(var i=0; i<12; i++)
+        {
+
+          // only if qty > 0
+          if(qty[i] > 0) {
+            output += "<tr><td>"+names[i]+"</td><td>"+qty[i]+"</td><td>$"+prices[i]+"</td><td> $"+
+            parseFloat(Math.round((qty[i] * prices[i]) * 100) / 100).toFixed(2)
+              +"</td></tr>";
+          }
+        }
+
+        // display total here
+        output += "</table><br /><h2>Total Bill: $" +          parseFloat(Math.round(calculate() * 100) / 100).toFixed(2);
+
+        // display all the output in dom element
+        elem.innerHTML = output;
+      }
+
+</script>
+
